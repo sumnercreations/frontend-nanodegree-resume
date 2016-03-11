@@ -1,5 +1,5 @@
 ## Demo
-You can view the live working code of this repository here: [Demo](http://sumnercreations.github.io/frontend-nanodegree-resume/{:target="_blank"})
+You can view the live working code of this repository here: [Demo](http://sumnercreations.github.io/frontend-nanodegree-resume/){:target="_blank"}
 
 ## How do I complete this project?
 
