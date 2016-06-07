@@ -1,7 +1,6 @@
 var bio = {
 	"name": "Ammon Lockwood",
 	"role": "Full Stack Web Developer",
-	"welcomeMessage": "Welcome, thanks for joining me on this Adventure.",
 	"contacts": {
 		"mobile": "801-987-0676",
 		"email": "ammon@plaidtie.net",
@@ -9,6 +8,7 @@ var bio = {
 		"twitter": "@paviktherin",
 		"location": "Utah"
 	},
+	"welcomeMessage": "Welcome, thanks for joining me on this Adventure.",
 	"skills": [
 		"JS",
 		"CSS",
@@ -19,16 +19,17 @@ var bio = {
 	],
 	"biopic": "https://www.gravatar.com/avatar/9c4e0b214051dd4bc76f9f3808586a83.jpg",
 	"display": function(){
-		$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-		$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-		$("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
-		$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+		var data = "%data%";
+		$("#header").prepend(HTMLheaderRole.replace(data, bio.role));
+		$("#header").prepend(HTMLheaderName.replace(data, bio.name));
+		$("#header").append(HTMLbioPic.replace(data, bio.biopic));
+		$("#header").append(HTMLwelcomeMsg.replace(data, bio.welcomeMessage));
 
 		for (contact in bio.contacts) {
 			if(bio.contacts.hasOwnProperty(contact)) {
-				$("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", bio.contacts[contact]));
+				$("#topContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace(data, bio.contacts[contact]));
 
-				$("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace("%data%", bio.contacts[contact]));
+				$("#footerContacts").append(HTMLcontactGeneric.replace("%contact%", contact).replace(data, bio.contacts[contact]));
 			}
 		}
 
@@ -36,7 +37,7 @@ var bio = {
 			$("#header").append(HTMLskillsStart);
 			for (skill in bio.skills) {
 				if(bio.skills.hasOwnProperty(skill)) {
-					$("ul#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));
+					$("ul#skills").append(HTMLskills.replace(data, bio.skills[skill]));
 				}
 			}
 		}
@@ -68,44 +69,52 @@ var education = {
 	"schools": [
 		{
 			"name": "Salt Lake Community College",
-			"url": "http://slcc.edu",
 			"location": "Salt Lake City, UT",
-			"dates": "2008-2012",
 			"degree": "Associates",
-			"major": "Computer Engineering"
+			"majors": [
+				"Computer Engineering",
+			],
+			"dates": "2008-2012",
+			"url": "http://slcc.edu"
 		}
 	],
 	"onlineCourses": [
 		{
 			"title": "Intro to HTML and CSS",
 			"school": "Udacity",
-			"dates": "2015",
+			"date": "2015",
 			"url": "https://udacity.com/courses/ud304"
 		},
 		{
 			"title": "Javascript Basics",
 			"school": "Udacity",
-			"dates": "2015",
+			"date": "2015",
 			"url": "https://www.udacity.com/course/ud804"
 		},
 		{
 			"title": "Front-End Web Developer Nanodegree",
 			"school": "Udacity",
-			"dates": "2015 - 2016",
+			"date": "2015 - 2016",
 			"url": "https://www.udacity.com/course/nd001"
 		}
 	],
 	"display": function() {
+		var data = "%data%";
 		for (school in education.schools) {
 			if(education.schools.hasOwnProperty(school)) {
 				$("#education").append(HTMLschoolStart);
-				var formattedName = HTMLschoolName.replace("#", education.schools[school].url).replace("%data%", education.schools[school].name);
-				var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-				var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-				var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-				var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+				var formattedName = HTMLschoolName.replace("#", education.schools[school].url).replace(data, education.schools[school].name);
+				var formattedDegree = HTMLschoolDegree.replace(data, education.schools[school].degree);
+				var formattedDates = HTMLschoolDates.replace(data, education.schools[school].dates);
+				var formattedLocation = HTMLschoolLocation.replace(data, education.schools[school].location);
 
-				$(".education-entry:last").append(formattedName + formattedDegree + formattedDates + formattedLocation + formattedMajor);
+				majors = [];
+				for (major in education.schools[school].majors) {
+					var formattedMajor = HTMLschoolMajor.replace(data, education.schools[school].majors[major]);
+					majors.push(formattedMajor);
+				}
+
+				$(".education-entry:last").append(formattedName + formattedDegree + formattedDates + formattedLocation + majors);
 			}
 		}
 
@@ -114,10 +123,10 @@ var education = {
 			for (course in education.onlineCourses) {
 				$("#education").append(HTMLschoolStart);
 				if(education.onlineCourses.hasOwnProperty(course)) {
-					var formattedTitle = HTMLonlineTitle.replace("#", education.onlineCourses[course].url).replace("%data%", education.onlineCourses[course].title);
-					var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-					var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
-					var formattedUrl = HTMLonlineURL.replace("#", education.onlineCourses[course].url).replace("%data%", education.onlineCourses[course].url);
+					var formattedTitle = HTMLonlineTitle.replace("#", education.onlineCourses[course].url).replace(data, education.onlineCourses[course].title);
+					var formattedSchool = HTMLonlineSchool.replace(data, education.onlineCourses[course].school);
+					var formattedDates = HTMLonlineDates.replace(data, education.onlineCourses[course].date);
+					var formattedUrl = HTMLonlineURL.replace("#", education.onlineCourses[course].url).replace(data, education.onlineCourses[course].url);
 
 					$(".education-entry:last").append(formattedTitle + formattedSchool + formattedDates + formattedUrl);
 				}
@@ -131,37 +140,38 @@ var work = {
 		{
 			"employer": "Plaid Tie LLC",
 			"title": "Partner and Senior Web Developer",
-			"url": "http://plaidtie.net",
 			"location": "Salt Lake City, UT",
 			"dates": "2012 - Present",
-			"description": "Freelance development company that was started with some friends to give us an environment where we could experiment with new technologies and has the added bonus of making us extra money."
+			"description": "Freelance development company that was started with some friends to give us an environment where we could experiment with new technologies and has the added bonus of making us extra money.",
+			"url": "http://plaidtie.net"
 		},
 		{
 			"employer": "3form",
 			"title": "Web Developer & Server Admin",
-			"url": "http://www.3-form.com",
 			"location": "Salt Lake City, UT",
 			"dates": "2012 - Present",
-			"description": "Full-Stack developer working with Yii, Bootstrap, BackboneJS and more."
+			"description": "Full-Stack developer working with Yii, Bootstrap, BackboneJS and more.",
+			"url": "http://www.3-form.com"
 		},
 		{
 			"employer": "Sorenson Communications",
 			"title": "Software Test Engineer",
-			"url": "http://www.sorenson.com",
 			"location": "Salt Lake City, UT",
 			"dates": "2008 - 2012",
-			"description": "Test the quality of the software provided using automation and test sessions."
+			"description": "Test the quality of the software provided using automation and test sessions.",
+			"url": "http://www.sorenson.com"
 		}
 	],
 	"display": function() {
+		var data = "%data%";
 		for (job in work.jobs) {
 			if(work.jobs.hasOwnProperty(job)) {
 				$("#workExperience").append(HTMLworkStart);
-				var formattedEmployer = HTMLworkEmployer.replace("#", work.jobs[job].url).replace("%data%", work.jobs[job].employer);
-				var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-				var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-				var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-				var formattedDescr = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+				var formattedEmployer = HTMLworkEmployer.replace("#", work.jobs[job].url).replace(data, work.jobs[job].employer);
+				var formattedTitle = HTMLworkTitle.replace(data, work.jobs[job].title);
+				var formattedDates = HTMLworkDates.replace(data, work.jobs[job].dates);
+				var formattedLocation = HTMLworkLocation.replace(data, work.jobs[job].location);
+				var formattedDescr = HTMLworkDescription.replace(data, work.jobs[job].description);
 
 				$(".work-entry:last").append(formattedEmployer + " " + formattedTitle + formattedDates + formattedLocation + formattedDescr);
 			}
@@ -192,16 +202,17 @@ var projects = {
 		}
 	],
 	"display": function() {
+		var data = "%data%";
 		for (project in projects.projects) {
 			if(projects.projects.hasOwnProperty(project)) {
 				$("#projects").append(HTMLprojectStart);
-				var formattedTitle = HTMLprojectTitle.replace("#", projects.projects[project].url).replace("%data%", projects.projects[project].title);
-				var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-				var formattedDescr = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+				var formattedTitle = HTMLprojectTitle.replace("#", projects.projects[project].url).replace(data, projects.projects[project].title);
+				var formattedDates = HTMLprojectDates.replace(data, projects.projects[project].dates);
+				var formattedDescr = HTMLprojectDescription.replace(data, projects.projects[project].description);
 
 				images = [];
 				for (image in projects.projects[project].images) {
-					var newImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+					var newImage = HTMLprojectImage.replace(data, projects.projects[project].images[image]);
 					images.push(newImage);
 				}
 
