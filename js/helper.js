@@ -64,7 +64,8 @@ The International Name challenge in Lesson 2 where you'll create a function that
 */
 $(document).ready(function() {
   $('button').click(function() {
-    var iName = inName("Sebastian Thrun") || function(){};
+    var $name = $("#name");
+    var iName = inName($name.text()) || function(){};
     $('#name').html(iName);
   });
 });
