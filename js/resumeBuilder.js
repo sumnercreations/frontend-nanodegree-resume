@@ -51,6 +51,11 @@ var bio = {
 			projects.display();
 		}
 
+		// if the education section isn't blank then display the eduction
+		if(education.schools.length > 0) {
+			education.display();
+		}
+
 		// Add internationalization button
 		// $("#main").append(internationalizeButton);
 
@@ -64,17 +69,28 @@ var education = {
 		{
 			"name": "Salt Lake Community College",
 			"location": "Salt Lake City, UT",
-			"years": "2008-2012",
+			"dates": "2008-2012",
 			"degree": "Associates",
 			"major": "Computer Engineering"
 		}
 	],
 	"onlineCourses": [
 		{
-			"name": "Udactiy",
-			"location": "Online",
-			"title": "Front-End Web Developer Nanodegree",
+			"title": "Intro to HTML and CSS",
+			"school": "Udacity",
 			"dates": "2015",
+			"url": "https://udacity.com/courses/ud304"
+		},
+		{
+			"title": "Javascript Basics",
+			"school": "Udacity",
+			"dates": "2015",
+			"url": "https://www.udacity.com/course/ud804"
+		},
+		{
+			"title": "Front-End Web Developer Nanodegree",
+			"school": "Udacity",
+			"dates": "2015 - 2016",
 			"url": "https://www.udacity.com/course/nd001"
 		}
 	]
@@ -138,7 +154,7 @@ var projects = {
 	]
 };
 
-projects.display = function () {
+projects.display = function() {
 	for (project in projects.projects) {
 		if(projects.projects.hasOwnProperty(project)) {
 			$("#projects").append(HTMLprojectStart);
@@ -153,6 +169,36 @@ projects.display = function () {
 			}
 
 			$(".project-entry:last").append(formattedTitle + formattedDates + formattedDescr + images);
+		}
+	}
+}
+
+education.display = function() {
+	for (school in education.schools) {
+		if(education.schools.hasOwnProperty(school)) {
+			$("#education").append(HTMLschoolStart);
+			var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+			var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+			var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+
+			$(".education-entry:last").append(formattedName + formattedDegree + formattedDates + formattedLocation + formattedMajor);
+		}
+	}
+
+	if(education.onlineCourses.length > 0) {
+		$("#education").append(HTMLonlineClasses);
+		for (course in education.onlineCourses) {
+			$("#education").append(HTMLschoolStart);
+			if(education.onlineCourses.hasOwnProperty(course)) {
+				var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+				var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+				var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+				var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+
+				$(".education-entry:last").append(formattedTitle + formattedSchool + formattedDates + formattedUrl);
+			}
 		}
 	}
 }
