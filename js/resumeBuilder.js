@@ -1,6 +1,6 @@
 var bio = {
 	"name": "Ammon Lockwood",
-	"role": "Web Developer",
+	"role": "Full Stack Web Developer",
 	"welcomeMessage": "Welcome, thanks for joining me on this Adventure.",
 	"contacts": {
 		"mobile": "801-987-0676",
@@ -132,7 +132,7 @@ var work = {
 			"employer": "Plaid Tie LLC",
 			"title": "Partner and Senior Web Developer",
 			"url": "http://plaidtie.net",
-			"location": "Salt Lake City, Utah",
+			"location": "Salt Lake City, UT",
 			"dates": "2012 - Present",
 			"description": "Freelance development company that was started with some friends to give us an environment where we could experiment with new technologies and has the added bonus of making us extra money."
 		},
