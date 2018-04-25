@@ -1,14 +1,14 @@
 var bio = {
 	"name": "Ammon Lockwood",
-	"role": "Full Stack Web Developer",
+	"role": "Senior Web Developer",
 	"contacts": {
-		"mobile": "801-987-0676",
+		"mobile": "801.987.0676",
 		"email": "ammon@plaidtie.net",
 		"github": "sumnercreations",
 		"twitter": "@paviktherin",
-		"location": "Utah"
+		"location": "Magna, Utah"
 	},
-	"welcomeMessage": "Welcome, thanks for joining me on this Adventure.",
+	"welcomeMessage": "Committed to using my skills and love of coding to create beautiful sites and applications on the web.",
 	"skills": [
 		"JS",
 		"CSS",
@@ -96,6 +96,12 @@ var education = {
 			"school": "Udacity",
 			"date": "2015 - 2016",
 			"url": "https://www.udacity.com/course/nd001"
+		},
+		{
+			"title": "Designing RESTful APIs",
+			"school": "Udacity",
+			"date": "2018",
+			"url": "https://classroom.udacity.com/courses/ud388"
 		}
 	],
 	"display": function() {
@@ -147,10 +153,18 @@ var work = {
 		},
 		{
 			"employer": "3form",
-			"title": "Web Developer & Server Admin",
+			"title": "Senior Web Developer",
 			"location": "Salt Lake City, UT",
-			"dates": "2012 - Present",
-			"description": "Full-Stack developer working with Yii, Bootstrap, BackboneJS and more.",
+			"dates": "2015 - Present",
+			"description": "Senior Web Developer working with Angular, Ruby on Rails, Yii, Bootstrap and more. </br>Build and manage online configuration tools using Angular and Rails.<br/>Build and Manage the customer facing website.",
+			"url": "http://www.3-form.com"
+		},
+		{
+			"employer": "3form",
+			"title": "Full Stack Web Developer & Server Admin",
+			"location": "Salt Lake City, UT",
+			"dates": "2012 - 2015",
+			"description": "Full-Stack developer working with Yii, Bootstrap, BackboneJS and more to create a custom CRM.",
 			"url": "http://www.3-form.com"
 		},
 		{
@@ -158,7 +172,7 @@ var work = {
 			"title": "Software Test Engineer",
 			"location": "Salt Lake City, UT",
 			"dates": "2008 - 2012",
-			"description": "Test the quality of the software provided using automation and test sessions.",
+			"description": "Test the quality of the software provided using automation and test sessions.<br/>Mobile application running on Android and iOS<br/>PC application running on Windows and Mac OSX.",
 			"url": "http://www.sorenson.com"
 		}
 	],
@@ -181,6 +195,33 @@ var work = {
 
 var projects = {
 	"projects": [
+		{
+			"title": "Udacity Front End Developer - Mememaker",
+			"url": "http://mememaker.ammon.plaidtie.net/",
+			"dates": "2017",
+			"description": "I was required to build a simple mememaker in order to become comfortable with the HTML Canvas element.",
+			"images": [
+				"images/meme-maker.png",
+			]
+		},
+		{
+			"title": "Udacity Front End Developer - Arcade Game (Frogger)",
+			"url": "http://frogger.ammon.plaidtie.net/",
+			"dates": "2017",
+			"description": "I was required to build a clone of the popular game, Frogger.",
+			"images": [
+				"images/arcade-game.png",
+			]
+		},
+		{
+			"title": "Udacity Front End Developer - Mobile Portfolio Load Performance",
+			"url": "https://sumnercreations.github.io/frontend-nanodegree-mobile-portfolio/",
+			"dates": "2016",
+			"description": "I was required to optimize the critical rendering path for page load speed.",
+			"images": [
+				"images/mobile-portfolio.png",
+			]
+		},
 		{
 			"title": "Udacity Front End Developer Project 1 - Pixel Perfect Mock Up",
 			"url": "http://sumnercreations.github.io/udacity-fed-project_1/",
